@@ -1,0 +1,15 @@
+node_modules
+build
+config
+dist
+docs
+deploy.sh
+sign
+src
+.babelrc
+.editorconfig
+.eslintrc.json
+.gitignore
+index.html
+package-lock.json
+npm-debug.log

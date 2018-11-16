@@ -1,24 +1,42 @@
 {
-  "name": "hap-ui",
+  "name": "quickapp-ui",
   "version": "1.0.0",
-  "description": "ui",
-  "main": "index.js",
+  "subversion": {
+    "toolkit": "0.0.38"
+  },
+  "description": "",
   "scripts": {
+    "server": "hap server",
+    "postinstall": "hap postinstall",
+    "debug": "hap debug",
+    "build": "hap build",
+    "release": "hap release",
+    "watch": "hap watch",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CooCooFE/hap-ui.git"
-  },
-  "keywords": [
-    "quickapp",
-    "ui"
-  ],
-  "author": "damonCY",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CooCooFE/hap-ui/issues"
-  },
-  "homepage": "https://github.com/CooCooFE/hap-ui#readme"
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-jsx": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.0",
+    "cross-env": "^5.1.4",
+    "css-what": "^2.1.0",
+    "hap-toolkit": "0.0.38-beta.2",
+    "hapdev-ui": "0.0.2",
+    "koa": "^2.3.0",
+    "koa-body": "^2.5.0",
+    "koa-router": "^7.2.1",
+    "koa-send": "^4.1.1",
+    "koa-static": "^4.0.1",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "scss-loader": "0.0.1",
+    "socket.io": "^2.1.0",
+    "webpack": "^4.18.0",
+    "webpack-cli": "^3.1.0"
+  }
 }

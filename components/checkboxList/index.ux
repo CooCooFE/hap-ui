@@ -1,0 +1,73 @@
+<template>
+  <div class="ux-checkboxList-content">
+    <text>
+      {{list}}
+    </text>
+    <block for="{{checkboxList}}">
+      <div class="ux-checkbox-content" @click="clickCheckbox($item, $idx)">
+        <text class="checkbox-label" style="color: {{$item.checked === true? '#EE9900': ''}}">{{$item.title}}</text>
+        <image class="checkbox-icon" src="{{$item.checked === true? checkedIconSrc: uncheckedIconSrc}}"></image>
+      </div>
+    </block>
+  </div>
+</template>
+
+<style>
+  .ux-checkboxList-content{
+    flex-direction: column;
+  }
+  .ux-checkbox-content {
+    height: 100px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 0px solid #dddddd;
+    align-items: center;
+    border-bottom-width: 1px;
+  }
+  .checkbox-icon {
+    height: 70px;
+    width: 70px;
+  }
+  .checkbox-label {
+    text-align: left;
+    color: #3D3D3D;
+    padding: 10px 20px;
+  }
+</style>
+
+<script>
+  import { CHECKED, UNCHECKED } from './type'
+  import prompt from '@system.prompt'
+  export default {
+    props: [
+      'list',
+      'checkedIconSrc',
+      'uncheckedIconSrc'
+    ],
+    data: {
+      checked_: CHECKED,
+      unchecked_: UNCHECKED,
+      checkboxList: [],
+    },
+    onInit () {
+      this.checkedIconSrc =  this.checkedIconSrc || this.checked_
+      this.uncheckedIconSrc = this.uncheckedIconSrc || this.unchecked_
+      this.checkboxList = this.list || []
+    },
+    clickCheckbox (item, index) {
+      this.checkboxList[index].checked = !item['checked']
+      const checkedResult = this.getResult()
+      this.$emit('change', {params: checkedResult})
+    },
+    getResult () {
+      const arr = []
+      this.checkboxList.forEach(function(item, index){
+        if (item.checked){
+          arr.push(index)
+        }
+      })
+      return arr
+    }
+  }
+</script>

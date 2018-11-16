@@ -1,0 +1,52 @@
+<import name="checkbox" src="checkbox"></import>
+<import name="checkboxList" src="checkboxList"></import>
+<template>
+  <div class="checkbox-page">
+    <text class="title">checkbox</text>
+    <checkbox title="默认" onchange="getStatus"></checkbox>
+    <checkbox title="默认选中" checked="{{true}}"></checkbox>
+    <checkbox title="未选中不可更改" checked="{{false}}" disabled="{{true}}"></checkbox>
+    <checkbox title="选中不可更改" checked="{{true}}" disabled="{{true}}"></checkbox>
+    <text class="title">checkboxList</text>
+    <checkboxList onchange="getCheckboxResult" list="{{list}}"></checkboxList>
+  </div>
+</template>
+
+<style>
+  .checkbox-page {
+    flex-direction: column;
+  }
+  .title {
+    height: 100px;
+    text-align: left;
+    padding: 0 20px;
+    background-color: #EE9900;
+  }
+</style>
+
+<script>
+import prompt from '@system.prompt'
+export default {
+  data: {
+    list: [
+      {title: '选项1', checked: true},
+      {title: '选项2', checked: false},
+      {title: '选项3', checked: false},
+      {title: '选项4', checked: true}
+    ]
+  },
+  onInit () {
+    this.$page.setTitleBar({ text: 'ux-checkbox' })
+  },
+  getStatus (e) {
+    prompt.showToast({
+      message:'checked = ' + e.detail.params
+    })
+  },
+  getCheckboxResult (e) {
+    prompt.showToast({
+      message:'checked = ' + e.detail.params
+    })
+  }
+}
+</script>

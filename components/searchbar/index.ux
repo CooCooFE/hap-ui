@@ -1,0 +1,119 @@
+<template>
+  <div class="ux-searchbar ux-searchbar-{{theme}}" style="barstyle || '">
+    <div class="searchbar-content searchbar-content-{{theme}}">
+      <image class="searchbar-icon" if="{{showsearchicon === 'false' ? false: true}}" src="{{searchIcon}}"></image>
+      <input class="searchbar-input"
+             disabled="{{disabled || false}}"
+             type="{{type || 'text'}}"
+             value="{{inputValue}}"
+             placeholder="{{placeholder || ''}}"
+             id="searchBarInput"
+             maxlength="{{maxlength}}"
+             enterkeytype="{{enterkeytype || 'default'}}"
+             @focus="onfocus"
+             @blur="onblur"
+             @change="onchange" />
+      <image class="searchbar-icon" src="{{clearIcon}}" @click="clearInput" show="{{needShowCancel || false}}"></image>
+    </div>
+    <text if="{{showcancel === 'false' ? false: true}}" class="searchbar-tip" @click="cancle">{{cancellable || '取消'}}</text>
+  </div>
+</template>
+
+<style>
+  .ux-searchbar {
+    padding: 15px;
+    background-color: #ffffff;
+  }
+  .searchbar-content {
+    padding: 0px 15px;
+    flex-grow: 1;
+    align-items: center;
+    background-color: #e5e5e5;
+    border-radius: 10px;
+  }
+  .searchbar-icon {
+    width: 40px;
+    height: 40px;
+    margin: 10px 0px;
+    resize-mode: contain;
+  }
+  .searchbar-tip {
+    width: 100px;
+    text-align: center;
+  }
+  .searchbar-input {
+    padding-left: 10px;
+    height: 80px;
+    flex-grow: 1;
+    font-size: 28px;
+  }
+  .ux-searchbar-yellow {
+    background-color: #ffc926;
+  }
+  .searchbar-content-yellow {
+    background-color: #fff6d6;
+  }
+</style>
+
+<script>
+  import prompt from '@system.prompt'
+  import { SEARCH_ICON, CLEAR_ICON } from './type';
+
+  export default {
+    props: [
+      'barstyle',
+      'value',
+      'theme',
+      'type',
+      'disabled',
+      'autofocus',
+      'placeholder',
+      'showclearicon',
+      'canclelabel',
+      'maxlength',
+      'showcancel',
+      'showsearchicon',
+      'enterkeytype'
+    ],
+    data: {
+      showClearIncon: false,
+      type: 'text',
+      inputValue: '',
+      searchIcon: SEARCH_ICON,
+      clearIcon: CLEAR_ICON,
+      needShowCancel: false
+    },
+    onInit () {
+      this.inputValue = this.value || ''
+    },
+    onReady () {
+      if (this.autofocus) {
+        this.$element('searchBarInput').focus()
+      }
+    },
+    clearInput () {
+      this.inputValue = ''
+      this.needShowCancel = false
+    },
+    onchange (e) {
+      this.inputValue = e.value
+      if (this.inputValue.trim()){
+        this.needShowCancel = true
+        this.showClearIncon = true
+      }
+      this.$emit('change', { params: this.inputValue })
+    },
+    onfocus () {
+      this.needShowCancel = true
+      this.$emit('focus')
+    },
+    onblur () {
+      this.needShowCancel = false
+      this.$emit('blur')
+    },
+    cancle () {
+      this.needShowCancel = false
+      this.$emit('cancle')
+    }
+  }
+</script>

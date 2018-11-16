@@ -1,0 +1,128 @@
+<import name="ux-button" src="button"></import>
+
+<template>
+  <!-- template里只能有一个根节点 -->
+  <div class="demo-page">
+    <text class="title">{{title}}</text>
+
+    <ux-button
+        type="primary"
+        size="large"
+        @click="uxbtnClick"
+        text="primary">
+    </ux-button>
+
+    <ux-button
+        type="danger"
+        size="large"
+        @click="uxbtnClick"
+        text="danger">
+    </ux-button>
+
+    <ux-button
+        type="default"
+        size="large"
+        @click="uxbtnClick"
+        text="default">
+    </ux-button>
+    <ux-button
+        type="default"
+        size="large"
+        @click="uxbtnClick"
+        text="primary">
+    </ux-button>
+
+    <ux-button
+        type="default"
+        size="large"
+        @click="uxbtnClick"
+        text="danger">
+    </ux-button>
+
+    <div style="display: flex;flex-direction: row">
+      <ux-button
+          btn-style="{{btnStyle}}"
+          text-style="{{textStyle}}"
+          @click="uxbtnClick"
+          text="normal">
+      </ux-button>
+      <ux-button
+          btn-style="{{btnStyle}}"
+          text-style="{{textStyle}}"
+          @click="uxbtnClick"
+          text="normal">
+      </ux-button>
+      <ux-button
+          btn-style="{{btnStyle}}"
+          text-style="{{textStyle}}"
+          @click="uxbtnClick"
+          text="normal">
+      </ux-button>
+    </div>
+    <div style="display: flex;flex-direction: row;align-items:center">
+      <ux-button
+          size="small"
+          btn-style="{{btnStyle}}"
+          text-style="{{textStyle}}"
+          @click="uxbtnClick"
+          text="small">
+      </ux-button>
+      <ux-button
+          size="small"
+          btn-style="{{btnStyle}}"
+          text-style="{{textStyle}}"
+          @click="uxbtnClick"
+          text="small">
+      </ux-button>
+      <ux-button
+          size="small"
+          btn-style="{{btnStyle}}"
+          text-style="{{textStyle}}"
+          @click="uxbtnClick"
+          text="small">
+      </ux-button>
+    </div>
+
+    <ux-button
+        size="large"
+        btn-style="{{btnStyle}}"
+        text-style="{{textStyle}}"
+        @click="uxbtnClick"
+        text="large">
+    </ux-button>
+
+  </div>
+</template>
+
+<style>
+  .demo-page {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+
+</style>
+
+<script>
+  export default {
+    private: {
+      title: 'button',
+      btnStyle:{
+        "backgroundColor": "#00ff00"
+      },
+      textStyle:{
+        "color": "#0000ff"
+      }
+    },
+    uxbtnClick(){
+      this.title = (new Date-0)
+    }
+  }
+</script>

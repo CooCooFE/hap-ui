@@ -1,0 +1,83 @@
+<template>
+  <div class="ux-checkbox-content" @click="uxClick">
+    <text class="checkbox-label" style="color: {{textColor}}">{{title}}</text>
+    <image class="checkbox-icon" src="{{iconSrc}}"></image>
+  </div>
+</template>
+
+<style>
+  .ux-checkbox-content {
+    height: 100px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 0px solid #dddddd;
+    align-items: center;
+    border-bottom-width: 1px;
+  }
+  .checkbox-icon {
+    height: 70px;
+    width: 70px;
+  }
+  .checkbox-label {
+    text-align: left;
+    padding: 10px 20px;
+  }
+</style>
+
+<script>
+import { CHECKED, UNCHECKED, CHECKED_DISABLED, UNCHECKED_DISABLED } from './type'
+export default {
+  props: [
+    'title',
+    'color',
+    'checked',
+    'checkedColor',
+    'disabled',
+    'checkedIconSrc',
+    'uncheckedIconSrc'
+  ],
+  data: {
+    checked_: CHECKED,
+    unchecked: UNCHECKED,
+    checked_disable: CHECKED_DISABLED,
+    unchecked_disable: UNCHECKED_DISABLED,
+    iconSrc: '',
+    textColor: '',
+    test: ''
+  },
+  onInit () {
+    this.test = typeof this.disabled
+    this.disabled = this.disabled === true? true: false
+    this.checked = this.checked === true? true: false
+    this.getIconSrc()
+  },
+  getIconSrc () {
+    if (this.checked && !this.disabled) {
+      this.iconSrc = this.checkedIconSrc || this.checked_
+    }
+    else if (this.checked && this.disabled) {
+      this.iconSrc = this.checkedIconSrc || this.checked_disable
+    }
+    else if (!this.checked && !this.disabled) {
+      this.iconSrc = this.uncheckedIconSrc || this.unchecked
+    }
+    else if (!this.checked && this.disabled) {
+      this.iconSrc = this.uncheckedIconSrc || this.unchecked_disable
+    }
+    this.textColor = !this.disabled&&this.checked === true? (this.checkedColor || '#EE9900') : (this.color || '#3D3D3D')
+  },
+  uxClick () {
+    if (this.disabled) return
+    if (this.checked) {
+      this.checked = false
+      this.getIconSrc()
+    }
+    else {
+      this.checked = true
+      this.getIconSrc()
+    }
+    this.$emit('change', {params: this.checked})
+  }
+}
+</script>

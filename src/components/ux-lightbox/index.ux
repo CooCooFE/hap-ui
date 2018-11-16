@@ -1,0 +1,89 @@
+<import name="lightbox" src="lightbox"></import>
+<template>
+  <div class="demo-page">
+    <lightbox
+      list="{{imgList}}"
+      index="{{index}}"
+      indicator-color="#9f7a1d"
+      indicator-size="20px"
+      indicator-selected-color="#ffc324"
+      show-lightbox="{{showLightbox}}"
+      show-indicator="{{showIndicator}}"
+      onchange="getIndex"></lightbox>
+    <div class="ux-content">
+      <block for="{{imgList}}">
+        <image class="ux-image" src="{{$item.src}}" onclick="showbPic($idx)"></image>
+      </block>
+    </div>
+
+  </div>
+</template>
+
+<style>
+  .demo-page {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .ux-content {
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .ux-image {
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    width: 200px;
+    height: 200px;
+    margin: 15px;
+  }
+</style>
+
+<script>
+import prompt from '@system.prompt'
+export default {
+  data: {
+    imgList: [
+      {
+        src: './img/pic1.webp'
+      }, {
+        src: './img/pic2.webp'
+      }, {
+        src: './img/pic3.webp'
+      }, {
+        src: './img/pic4.webp'
+      }, {
+        src: './img/pic5.webp'
+      }, {
+        src: './img/pic6.webp'
+      }, {
+        src: './img/pic7.webp'
+      }, {
+        src: './img/pic8.webp'
+      }, {
+        src: './img/pic9.webp'
+      }
+    ],
+    index: 0,
+    showLightbox: false,
+    showIndicator: true
+  },
+  onInit(){
+    this.$page.setTitleBar({text: 'quickApp-lightbox'})
+  },
+  showbPic (idx) {
+    this.index = idx;
+    this.showLightbox = new String(true)
+  },
+  getIndex (e) {
+    // 返回lightbox插件当前的图片缩影
+    // prompt.showToast({
+    //   message: e.detail.params
+    // })
+  }
+
+}
+</script>

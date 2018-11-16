@@ -1,0 +1,57 @@
+<import name="tabBar" src="tabBar"></import>
+
+<template>
+  <div class="demo-page">
+    <tabBar
+      tabtitles="{{tabtitles}}"
+      onchange="getIndex"
+      mode="fixed">
+      <!--The first page content-->
+      <div class="tab-content"><text>热门</text></div>
+
+      <!--The second page content-->
+      <div class="tab-content"><text>推荐</text></div>
+
+      <!-- The third page content-->
+      <div class="tab-content"><text>消息中</text></div>
+
+      <!-- The fourth page content-->
+      <div class="tab-content"><text>我的主页</text></div>
+    </tabBar>
+  </div>
+</template>
+
+<style>
+  .demo-page {
+    flex: 1;
+    flex-direction: column;
+  }
+  .tab-content {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
+<script>
+  import prompt from '@system.prompt'
+  import * as Images from './type'
+
+  export default {
+    data: {
+      tabtitles: []
+    },
+    onInit () {
+      this.tabtitles = [
+        { icon: Images.Hot, activeIcon: Images.Hot_active, title: '首页' },
+        { icon: Images.Recommander, activeIcon: Images.Recommander_active, title: '特别推荐' },
+        { icon: Images.Message, activeIcon: Images.Message_active, title: '信息中心' },
+        { icon: Images.Palm, activeIcon: Images.Palm_active, title: '我的主页' }]
+    },
+    getIndex (e) {
+      // prompt.showToast({
+      //   message: e.detail.params
+      // })
+    }
+  }
+</script>

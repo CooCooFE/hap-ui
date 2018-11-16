@@ -5,11 +5,9 @@ module.exports = {
   head: [
     ['link', {rel: 'icon', href: '/favicon.ico'}]
   ],
-  themeConfig:
-    {
+  themeConfig: {
       displayAllHeaders: true,
-      sidebarDepth:
-        0,
+      sidebarDepth: 0,
       nav:
         [
           {text: '指南', link: '/'},
@@ -28,7 +26,7 @@ module.exports = {
           {
             title: '基础组件',
             children: [
-              '/guide/button'
+              '/guide/hap-titleBar'
             ]
           }
         ]

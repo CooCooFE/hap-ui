@@ -1,0 +1,90 @@
+<template>
+	<div
+		class="ux-btn ux-btn--{{size}} ux-btn--{{type}}"
+    style="{{btnStyle}}"
+		@click="handleClick">
+		<text class="btn-text" style="{{textStyle}}">{{text}}</text>
+	</div>
+</template>
+
+<style lang="sass">
+	@import '../../src/style/var.sass';
+
+  .ux-btn {
+    border:1px solid #dfdfdf;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    margin-bottom:20px;
+		&--small {
+			 width: 157px;
+			 height: 44px;
+		}
+		&--normal {
+			 width: 218px;
+			 height: 70px;
+		}
+		&--large {
+			 width: 702px;
+			 height: 88px;
+		}
+		&--default {
+			 color: $button-default-color;
+			 background-color: $button-default-background-color;
+		}
+		&--danger {
+			 color: $button-danger-color;
+			 background-color: $button-danger-background-color;
+		}
+		&--primary {
+			 color: $button-primary-color;
+			 background-color: $button-primary-background-color;
+		}
+  }
+  .btn-text {
+    justify-content: center;
+    font-size: 30px;
+  }
+</style>
+
+<script>
+	export default {
+		props: {
+      text: {
+        type: String,
+        default: '确认'
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      type: {
+        type: String,
+        default: 'default',
+        validator(value) {
+          return [
+            'default',
+            'danger',
+            'primary'
+          ].indexOf(value) > -1;
+        }
+      },
+      size: {
+        type: String,
+        default: 'normal',
+        validator(value) {
+          return [
+            'small',
+            'normal',
+            'large'
+          ].indexOf(value) > -1;
+        }
+      },
+      btnStyle: Object,
+      textStyle: Object,
+  	},
+  	onClicked:function(){
+      this.$emit('click')
+  	}
+	}
+</script>

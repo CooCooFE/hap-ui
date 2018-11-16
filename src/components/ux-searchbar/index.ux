@@ -1,0 +1,74 @@
+<import name="searchbar" src="searchbar"></import>
+
+<template>
+  <div class="demo-page">
+    <text>{{title}}</text>
+    <div class="ux-content">
+      <text onclick="setValue">点击我可以设置输入框的值</text>
+      <searchbar @change="getInputValue" placeholder="搜索" enterkeytype="default" @focus="focusFn" @blur="blurFn" value="{{defaultValue}}" @cancle="cancleFn"></searchbar>
+      <text>inputValue: {{inputValue}}</text>
+    </div>
+
+    <div class="ux-content">
+      <text onclick="setValue">禁用输入框</text>
+      <searchbar placeholder="无法输入" disabled="true" ></searchbar>
+    </div>
+    <div class="ux-content">
+      <text onclick="setValue">输入数字</text>
+      <searchbar type="number" showsearchicon="false" showcancel="false"></searchbar>
+    </div>
+
+    <div class="ux-content">
+      <text onclick="setValue">自定义输入框样式</text>
+      <searchbar placeholder="搜索" theme="yellow"></searchbar>
+    </div>
+    <div class="ux-content">
+      <text onclick="setValue">定制取消按钮,同时theme="yellow"</text>
+      <searchbar placeholder="搜索" canclelabel="测试" theme="yellow"></searchbar>
+    </div>
+  </div>
+</template>
+
+<style>
+  .demo-page {
+    flex: 1;
+    flex-direction: column;
+    background-color: #f6f9f8;
+  }
+  .ux-content {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+</style>
+
+<script>
+  import prompt from '@system.prompt'
+  export default {
+    data: {
+      inputValue: '',
+      defaultValue: ''
+    },
+    getInputValue (e) {
+      this.inputValue = e.detail.params
+    },
+    setValue () {
+      this.defaultValue = '点击我可以设置输入框的值'
+    },
+    focusFn () {
+      prompt.showToast({
+        message: 'onfocus'
+      })
+    },
+    blurFn () {
+      prompt.showToast({
+        message: 'onblur'
+      })
+    },
+    cancleFn () {
+      prompt.showToast({
+        message: 'cancle.onclick'
+      })
+    }
+  }
+</script>

@@ -1,0 +1,62 @@
+<template>
+  <div class="ux-tab-bar">
+    <tabs class="tab-bar-tabs" onchange="getIndex">
+      <tab-content class="tab-bar-content">
+        <slot></slot>
+      </tab-content>
+      <tab-bar class="tab-bar-title" mode="{{mode || 'fixed'}}">
+        <block for="{{tabtitles}}">
+          <div class="tab-bar-title-item">
+            <image src="{{index === $idx? $item.activeIcon: $item.icon}}" class="tab-bar-item-img"></image>
+            <text style="text-align: center">{{$item.title}}</text>
+          </div>
+        </block>
+      </tab-bar>
+    </tabs>
+  </div>
+</template>
+
+<style>
+  .ux-tab-bar {
+    flex: 1;
+  }
+  .tab-bar-tabs {
+    flex-direction: column;
+  }
+  .tab-bar-content {
+    background-color: #f2f3f4;
+  }
+  .tab-bar-title {
+    flex-direction: row;
+    padding: 10px 0px;
+    background-color: #ffffff;
+  }
+  .tab-bar-title-item {
+    flex: 1;
+    height: 140px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .tab-bar-item-img {
+    width: 70px;
+    height: 70px;
+    resize-mode: contain;
+  }
+</style>
+
+<script>
+  export default {
+    props: [
+      'mode',
+      'tabtitles'
+    ],
+    data: {
+      index: 0
+    },
+    getIndex (e) {
+      this.index = e.index
+      this.$emit('change', { params: this.index })
+    }
+  }
+</script>

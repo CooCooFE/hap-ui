@@ -1,0 +1,26 @@
+<template>
+  <div class="ux-dialog">
+    <div class="ux-mask"></div>
+    <div class="dialog-container">
+      <div class="dialog-header">
+        <text class="title">{{title}}</text>
+      </div>
+      <div class="dialog-body">
+        <slot>
+          <text class="content">{{content}}</text>
+        </slot>
+      </div>
+      <div class="dialog-footer">
+
+      </div>
+    </div>
+  </div>
+</template>
+<style lang="sass">
+
+</style>
+<script>
+  export default {
+
+  }
+</script>

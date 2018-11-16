@@ -1,0 +1,62 @@
+<template>
+  <div class="mod-lightbox" onclick="closeLightbox">
+    <div class="lightbox-content" show="{{showLightbox === false? false: true}}" >
+      <swiper
+        class="lightbox-swiper"
+        indicator="{{showIndicator === false? false: true}}"
+        style="indicatorColor: {{indicatorColor || '#9f7a1d'}};
+        indicatorSelectedColor: {{indicatorSelectedColor || '#33b4ff'}};
+        indicatorSize: {{indicatorSize || '20px'}}"
+        index="{{index || 0}}"
+        onchange="changeFn">
+        <block for="{{list}}">
+          <image class="lightbox-swiper-img" src="{{$item.src}}"></image>
+        </block>
+      </swiper>
+    </div>
+  </div>
+</template>
+
+<style>
+  .mod-lightbox {
+    flex: 1;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .lightbox-content {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox-swiper {
+    height: 500px;
+    width: 750px;
+  }
+  .lightbox-swiper-img {
+    height: 500px;
+    width: 750px;
+    resize-mode: contain;
+  }
+</style>
+
+<script>
+  export default {
+    props: [
+      'list',
+      'index',
+      'showLightbox',
+      'showIndicator',
+      'indicatorColor',
+      'indicatorSize',
+      'indicatorSelectedColor'
+    ],
+    closeLightbox () {
+      this.showLightbox = false
+    },
+    changeFn (e) {
+      this.$emit('change', {params: e.index})
+    }
+  }
+</script>

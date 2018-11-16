@@ -1,0 +1,70 @@
+<template>
+  <!-- template里只能有一个根节点 -->
+  <div class="ux-page">
+    <div class="title">
+      <text>hap-ui</text>
+    </div>
+    <list>
+      <block for="{{pages}}">
+        <list-item type="item" class="list_item" onclick="goSub($item)">
+          <text class="item_title">{{$item}}</text><image class="item_arrow_right" src="arrow-right.png"></image>
+        </list-item>
+      </block>
+    </list>
+  </div>
+</template>
+
+<style>
+  .ux-page {
+    flex-direction: column;
+    flex: 1;
+  }
+  .title {
+    height: 120px;
+    justify-content: center;
+    border: 0px solid #eee;
+    border-bottom-width: 1px;
+  }
+  a{
+    padding: 20px 50px;
+    text-decoration: underline;
+  }
+  .list_item {
+    border: 0px solid #eee;
+    border-bottom-width: 1px;
+    height: 140px;
+    padding: 20px;
+    align-items: center;
+  }
+
+  .item_title {
+    flex: 1;
+  }
+  .item_arrow_right {
+    height: 40px;
+    width: 20px;
+    resize-mode: contain;
+  }
+</style>
+
+<script>
+  import router from '@system.router'
+  export default {
+    private: {
+      pages: []
+    },
+    onInit () {
+      let routerList = []
+      const pages = this.$app.$def.manifest.router.pages
+      for(let i in pages){
+        if(i!=='Home')routerList.push(i)
+      }
+      this.pages = routerList
+    },
+    goSub (src) {
+      router.push({
+        uri: src
+      })
+    }
+  }
+</script>
