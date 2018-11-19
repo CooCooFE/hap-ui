@@ -3,7 +3,7 @@
 
 
 ### 配置
-> 在src同级目录创建config文件夹，在文件中创建webpack.config.js文件
+> 在src同级目录创建config文件夹，在config文件夹中创建webpack.config.js文件
 > 在webpack.config.js中加入以下内容
 ```js{4}
 var path = require('path')

@@ -1,6 +1,6 @@
-# titleBar
+# hap-titleBar
 
-> 按钮组件，提供了通栏和非通栏两种大小，可自定义样式
+> hap 标题栏组件
 
 
 ## 安装
@@ -14,59 +14,43 @@ $ npm install hap-ui -D
 <import name='hap-titleBar' src='@hap-ui/hap-titleBar'></import>
 ```
 
-## 例子
+## Demo
 
-#### 不同颜色
+gif图展示
 
-```js{4}
-<hap-titleBar></hap-titleBar>
-
-<hap-titleBar></hap-titleBar>
-
-<hap-titleBar></hap-titleBar>
-```
-
-#### 禁用按钮
+#### 使用方法
 
 ```js{4}
-<quist-button disabled value="Disabled"></quist-button>
+<hap-titleBar title="titleBar1"
+              onleft-button-clicked="onLeftButtonClicked"
+              onright-button-clicked="onRightButtonClicked"
+              right-button="./images/share-1.png" ></hap-titleBar>
 ```
 
 #### 绑定 click 事件
 
 ```js{4}
-<quist-button type="default" block @on-click="onClick"></quist-button>
+<hap-titleBar
+  onleft-button-clicked="onLeftButtonClicked"
+  onright-button-clicked="onRightButtonClicked"></hap-titleBar>
 ```
 
-#### 自定义样式按钮
+更详细代码可以参考 [hap-titleBar demo](https://github.com/CooCooFE/hap-ui/src/ux-titleBar/index.ux)
 
-```js{4}
-<hap-titleBar title="tileBar"
-                background-color="#f2f3f4"
-                text-color="#333333"
-                text-align="left"
-                left-button="./images/arrow-left-0.png"></hap-titleBar>
-```
+## 可配置参数
 
-更详细代码可以参考 [quist-button demo](https://github.com/JDsecretFE/quist-ui/tree/master/src/Button/index.ux)
-
-## API
-
-| 属性 | 说明 | 类型 | 默认值 |
-|-------------|------------|:--------:|:-----:|
-| title | titleBar的文字 | `String` |  title |
-| text-color | 文字颜色 | `String` | #d9d9d9 |
-| text-align | 文本对齐方式 | `Number` | 6 |
-| font-size | 字体尺寸 | `String` | #ffffff |
-| background-color | 背景颜色 | `Number` | 200 |
-| right-button | 按钮的高度 | `Number` | 80 |
-| left-button | 按钮文字的大小 | `Number ` | 32 |
-
+| Prop        | Type        | Default | Description |
+|-------------|------------|:--------:|:-----------:|
+| title       | `String`   |    title |titleBar的文字|
+| text-color  | `String`   | #FFFFFF | 文字颜色|
+| text-align  | `String`   | center| 文本对齐方式|
+| font-size   | `String`   | 35px | 字体尺寸|
+| background-color | `String` | #0faeff | 背景颜色 |
+| right-button | `String` |  | 右侧按钮文本描述 |
+| left-button  | `String` |  | 左侧按钮文本描述 |
 
 ## 更新日志
 
-#### v1.0.0（2018-09-30）
+#### v1.0.0（2018-11-16）
 * 初始版本
 
-#### v1.0.8（2018-11-01）
-* [优化] 可自定义按钮的大小、颜色、边框、圆角及按钮文字大小、颜色

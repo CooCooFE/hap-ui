@@ -1,6 +1,6 @@
 module.exports = {
   base: '/',
-  title: 'hap-UI',
+  title: 'hap-ui',
   description: '快应用UI组件库，简洁，易用，高效',
   head: [
     ['link', {rel: 'icon', href: '/favicon.ico'}]
@@ -26,7 +26,7 @@ module.exports = {
           {
             title: '基础组件',
             children: [
-              '/guide/hap-titleBar'
+              '/guide/titleBar'
             ]
           }
         ]
