@@ -16,6 +16,8 @@ $ npm install hap-ui -D
 
 ## 例子
 
+gif图
+
 #### 绑定 click 事件
 
 ```js{4}
@@ -34,7 +36,7 @@ $ npm install hap-ui -D
               left-button="./icon.png"></hap-titleBar>
 ```
 
-更详细代码可以参考 [hap-titleBar demo](https://github.com/CooCooFE/hap-ui/src/components/ux-titleBar/index.ux)
+更详细代码可以参考 [hap-titleBar demo](https://github.com/CooCooFE/hap-ui/blob/master/src/components/ux-titleBar/index.ux)
 
 ## API 
 

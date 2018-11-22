@@ -20,22 +20,22 @@ gif图展示
 
 #### 使用方法
 
-```js{4}
+```js{6}
 <hap-titleBar title="titleBar1"
               onleft-button-clicked="onLeftButtonClicked"
               onright-button-clicked="onRightButtonClicked"
               right-button="./images/share-1.png" ></hap-titleBar>
 ```
 
-#### 绑定 click 事件
+#### 事件
 
-```js{4}
+```js{6}
 <hap-titleBar
   onleft-button-clicked="onLeftButtonClicked"
   onright-button-clicked="onRightButtonClicked"></hap-titleBar>
 ```
 
-更详细代码可以参考 [hap-titleBar demo](https://github.com/CooCooFE/hap-ui/src/ux-titleBar/index.ux)
+更详细代码可以参考 [hap-titleBar demo](https://github.com/CooCooFE/hap-ui/blob/master/src/components/ux-titleBar/index.ux)
 
 ## 可配置参数
 
